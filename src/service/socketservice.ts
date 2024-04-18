@@ -21,6 +21,9 @@ class SocketService{
                 socket.join(data.room)
                 this._io.of("/chat").to(data.room).emit("JOINED", data)
             })
+            socket.on("ENDCALL", (data)=>{
+                this._io.of("/chat").to(data.room).emit("ENDCALL")
+            })
 
             socket.on("MESSAGE", (data)=>{
                 this._io.of("/chat").to(data.room).emit("message", data)
