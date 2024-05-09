@@ -21,10 +21,12 @@ const server = http.createServer(app);
 socketservice.io.attach(server);
 socketservice.initialisechatting();
 socketservice.initialisejoining();
+socketservice.initialisevideo();
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 app.use("/room", require("./routes/room"));
+app.use("/upload", require("./routes/upload"));
 server.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
 });

@@ -27,12 +27,13 @@ const server= http.createServer(app)
 socketservice.io.attach(server)
 socketservice.initialisechatting()
 socketservice.initialisejoining()
-
+socketservice.initialisevideo()
 
 app.get("/", (req : Request, res: Response) => {
   res.send("Hello World!")
 })
 app.use("/room", require("./routes/room"))
+app.use("/upload", require("./routes/upload"))
 
 
 
